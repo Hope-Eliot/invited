@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pour toi, Widjina 🤍</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose:#ffb8c6; --rose-fonce:#e76f86; --peche:#ffd9c7; --creme:#fff7f2;
+    --lavande:#cdb8ff; --bleu:#5b8def; --vert:#4cba8b; --texte:#5b3b46; --or:#e9a23b;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { max-width:100%; overflow-x:hidden; }
+  body {
+    font-family:'Nunito',sans-serif; color:var(--texte); min-height:100vh;
+    background:
+      radial-gradient(circle at 15% 10%, #ffe3ec 0%, transparent 45%),
+      radial-gradient(circle at 85% 20%, #e7ddff 0%, transparent 45%),
+      radial-gradient(circle at 50% 100%, #ffe9dc 0%, transparent 55%),
+      linear-gradient(160deg, #fff7f2, #ffeaf0);
+    display:flex; align-items:center; justify-content:center; padding:18px;
+  }
+  .fond { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  .fond span { position:absolute; bottom:-30px; font-size:18px; opacity:.5; animation:flotter linear infinite; }
+  @keyframes flotter { to { transform:translateY(-110vh) rotate(40deg); opacity:0; } }
+
+  .carte {
+    position:relative; z-index:1; max-width:440px; width:100%;
+    background:rgba(255,255,255,.78); backdrop-filter:blur(14px);
+    border:1.5px solid rgba(255,255,255,.9); border-radius:30px;
+    padding:38px 26px 34px;
+    box-shadow:0 24px 60px rgba(231,111,134,.25), inset 0 1px 0 rgba(255,255,255,.8);
+    text-align:center; opacity:0; transform:translateY(28px) scale(.97);
+    animation:entree .9s cubic-bezier(.2,.8,.2,1) forwards;
+  }
+  @keyframes entree { to { opacity:1; transform:none; } }
+
+  .bulle { display:inline-block; font-size:12px; font-weight:800; letter-spacing:1.5px;
+    text-transform:uppercase; color:var(--rose-fonce); background:#ffe3ea;
+    padding:6px 16px; border-radius:50px; margin-bottom:18px; }
+  h1 { font-family:'Fraunces',serif; font-size:36px; font-weight:600; line-height:1.15;
+    margin-bottom:6px; color:var(--rose-fonce); }
+  h1 .petit { display:block; font-size:17px; font-weight:500; font-style:italic; color:var(--texte); opacity:.75; margin-top:4px; }
+  .ourson { font-size:46px; margin:14px 0 22px; display:inline-block; animation:rebond 2.4s ease-in-out infinite; }
+  @keyframes rebond { 0%,100%{transform:translateY(0) rotate(-3deg);} 50%{transform:translateY(-8px) rotate(3deg);} }
+
+  .polaroid {
+    display:inline-block; background:#fff; padding:12px 12px 0; border-radius:6px;
+    box-shadow:0 14px 34px rgba(231,111,134,.35);
+    margin:0 auto 24px; transform:rotate(-3deg) scale(.7); opacity:0;
+    animation:photo-pop 1s cubic-bezier(.2,1.4,.4,1) .4s forwards;
+    transition:transform .3s;
+  }
+  .polaroid:hover { transform:rotate(0deg) scale(1.04); }
+  .polaroid img { display:block; width:100%; max-width:230px; height:200px; object-fit:cover; border-radius:3px; }
+  .polaroid .legende { display:block; font-family:'Fraunces',serif; font-style:italic; color:var(--texte); padding:10px 4px 14px; font-size:15px; }
+  @keyframes photo-pop { to { opacity:1; transform:rotate(-3deg) scale(1); } }
+
+  .lettre { text-align:left; font-size:16px; line-height:1.75; background:rgba(255,255,255,.6);
+    border-radius:20px; padding:20px; border:1px dashed var(--rose); }
+  .lettre p { margin-bottom:14px; }
+  .lettre p:last-child { margin-bottom:0; }
+  .lettre strong { color:var(--rose-fonce); }
+  .signe { font-family:'Fraunces',serif; font-style:italic; text-align:right; color:var(--rose-fonce); margin-top:14px; font-size:16px; }
+
+  .match { margin-top:24px; border-radius:22px; padding:20px 16px;
+    background:linear-gradient(135deg,#fff0f4,#f0eaff); border:1px solid rgba(255,255,255,.9); }
+  .match .quand { font-size:11px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:var(--lavande); margin-bottom:12px; }
+  .equipes { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+  .team { font-weight:800; font-size:19px; padding:5px 14px; border-radius:12px; background:#fff; box-shadow:0 4px 12px rgba(0,0,0,.06); }
+  .ballon { font-size:20px; animation:tourne 4s linear infinite; }
+  @keyframes tourne { to { transform:rotate(360deg); } }
+  .horaire { font-size:13.5px; font-weight:700; color:var(--texte); }
+  .horaire b { color:var(--rose-fonce); }
+
+  .question { margin-top:26px; }
+  .question .q { font-family:'Fraunces',serif; font-size:21px; font-weight:600; margin-bottom:22px; transition:all .3s; min-height:56px; display:flex; align-items:center; justify-content:center; }
+
+  .boutons { display:flex; gap:14px; justify-content:center; align-items:center; flex-wrap:wrap; min-height:64px; }
+  button { font-family:'Nunito',sans-serif; font-weight:800; border:none; cursor:pointer;
+    transition:transform .25s cubic-bezier(.2,.9,.3,1.4), box-shadow .2s, font-size .25s, padding .25s, opacity .3s; }
+  #oui { color:#fff; font-size:17px; padding:15px 34px; border-radius:50px;
+    background:linear-gradient(135deg,var(--rose-fonce),#ff9bb0);
+    box-shadow:0 10px 24px rgba(231,111,134,.45); }
+  #oui:hover { transform:scale(1.06); }
+  #non { color:var(--texte); font-size:17px; padding:15px 30px; border-radius:50px;
+    background:#fff; box-shadow:0 6px 16px rgba(0,0,0,.08); }
+  #non.parti { opacity:0; pointer-events:none; width:0; padding:0; margin:0; overflow:hidden; }
+
+  .fin { display:none; margin-top:8px; animation:entree .8s ease forwards; }
+  .fin .gros { font-size:54px; display:block; margin-bottom:8px; animation:rebond 1.6s ease-in-out infinite; }
+  .fin h2 { font-family:'Fraunces',serif; font-size:28px; color:var(--rose-fonce); margin-bottom:8px; }
+  .fin p { font-size:16px; line-height:1.6; }
+
+  .pluie { position:fixed; top:-40px; font-size:26px; pointer-events:none; z-index:99; animation:tomber linear forwards; }
+  @keyframes tomber { to { transform:translateY(112vh) rotate(360deg); opacity:0; } }
+
+  @media (max-width:420px){
+    .carte { padding:32px 20px; border-radius:26px; }
+    h1 { font-size:31px; } .lettre { font-size:15.5px; }
+  }
+</style>
+</head>
+<body>
+  <div class="fond" id="fond"></div>
+
+  <div class="carte">
+    <span class="bulle">Un soir rien qu'à nous</span>
+    <h1>Pour toi, Widjina<span class="petit">une petite demande du cœur…</span></h1>
+    <span class="ourson">🧸</span>
+
+    <div class="polaroid" id="polaroid">
+      <img src="photo1.jpg" alt="Nous deux 🤍" onerror="this.parentElement.style.display='none'">
+      <span class="legende">toi & moi 🤍</span>
+    </div>
+
+    <div class="lettre">
+      <p>Coucou mon cœur 🤍</p>
+      <p>Je sais qu'en ce moment c'est un peu compliqué entre nous, et je ne veux pas faire comme si de rien n'était.</p>
+      <p>Mais ce soir, c'est un match <strong>historique</strong> : Haïti contre le Brésil. Et j'aimerais tellement que tu sois là… qu'au moins je puisse dire qu'un jour pareil, c'est <strong>toi</strong> qui étais à mes côtés.</p>
+      <p>Juste toi, moi et le foot. On serait prêts vers 21h10, promis. 🥹</p>
+      <p class="signe">— Avec tout mon cœur</p>
+    </div>
+
+    <div class="match">
+      <p class="quand">⏰ Ce soir</p>
+      <div class="equipes">
+        <span class="team" style="color:var(--bleu)">Haïti</span>
+        <span class="ballon">⚽</span>
+        <span class="team" style="color:var(--vert)">Brésil</span>
+      </div>
+      <p class="horaire">Coup d'envoi <b>21h30</b> · on est là dès <b>21h10</b></p>
+    </div>
+
+    <div class="question" id="zone-question">
+      <p class="q" id="q">Alors… tu viens avec moi ? 🥺</p>
+      <div class="boutons">
+        <button id="oui">Oui 🤍</button>
+        <button id="non">Non</button>
+      </div>
+    </div>
+
+    <div class="fin" id="zone-fin">
+      <span class="gros">🥰</span>
+      <h2>Yayyy ! 🎉</h2>
+      <p>Je savais que mon cœur dirait oui.<br>Rendez-vous à 21h10, je t'attends. 🤍⚽</p>
+    </div>
+  </div>
+
+<script>
+  // cœurs flottants
+  (function(){
+    const f=document.getElementById('fond'), it=['🤍','💗','✨','🩷','💞'];
+    for(let n=0;n<14;n++){const s=document.createElement('span');
+      s.textContent=it[Math.floor(Math.random()*it.length)];
+      s.style.left=Math.random()*100+'vw'; s.style.fontSize=(14+Math.random()*16)+'px';
+      s.style.animationDuration=(9+Math.random()*10)+'s'; s.style.animationDelay=(Math.random()*10)+'s';
+      f.appendChild(s);}
+  })();
+
+  const non=document.getElementById('non'), oui=document.getElementById('oui'), q=document.getElementById('q');
+  const qPhrases=[
+    "Hmm… t'es sûre ? 🥺","Allez, juste ce soir 🙏","Regarde comme je demande gentiment 🥹",
+    "Mon cœur, stp… 💗","Le Brésil quand même ! ⚽","Le bouton Non n'aime pas trop ça 👀",
+    "Il disparaît, regarde… ✨","Y'a plus que le Oui maintenant 🤍"
+  ];
+  let step=0, taille=15;
+
+  non.addEventListener('click', shrink);
+  non.addEventListener('mouseover', shrink);
+  non.addEventListener('touchstart', function(e){ e.preventDefault(); shrink(); });
+
+  function shrink(){
+    if(non.classList.contains('parti')) return;
+    step++;
+    // question qui change
+    q.textContent = qPhrases[Math.min(step-1, qPhrases.length-1)];
+    // le oui grossit
+    oui.style.transform = 'scale(' + Math.min(1 + step*0.08, 1.7) + ')';
+    // le non rétrécit
+    taille = Math.max(0, taille - 2.4);
+    non.style.fontSize = taille + 'px';
+    non.style.padding = (taille*0.7) + 'px ' + (taille*1.4) + 'px';
+    non.style.opacity = Math.max(0, 1 - step*0.16);
+    if(step >= 6){ non.classList.add('parti'); }
+  }
+
+  // Notification automatique Telegram quand elle dit oui
+  const TG_TOKEN = "8822125440:AAEfOw2xMriSwu3jD8wNwYm-5YlSumU0eu8";
+  const TG_CHAT  = "5071203800";
+  const TG_MSG   = "💗 Widjina a dit OUI ! Rendez-vous à 21h10 pour Haïti - Brésil ⚽🤍";
+
+  oui.addEventListener('click', function(){
+    document.getElementById('zone-question').style.display='none';
+    document.getElementById('zone-fin').style.display='block';
+    pluie();
+    // envoie la notif Telegram automatiquement
+    const url = "https://api.telegram.org/bot" + TG_TOKEN + "/sendMessage?chat_id=" + TG_CHAT + "&text=" + encodeURIComponent(TG_MSG);
+    fetch(url).catch(function(){ /* silencieux si pas de réseau */ });
+  });
+
+  function pluie(){
+    const e=['🤍','💗','🩷','💞','⚽','🎉','✨'];
+    for(let n=0;n<46;n++){const c=document.createElement('div');c.className='pluie';
+      c.textContent=e[Math.floor(Math.random()*e.length)];
+      c.style.left=Math.random()*100+'vw'; c.style.animationDuration=(2+Math.random()*3)+'s';
+      c.style.animationDelay=(Math.random()*1.8)+'s'; document.body.appendChild(c);
+      setTimeout(()=>c.remove(),6000);}
+  }
+</script>
+</body>
+</html>
